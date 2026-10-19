@@ -265,7 +265,7 @@ function buildEvents() {
 function render() {
   const { groom, bride, contacts } = CONFIG;
   document.documentElement.lang = lang;
-  document.title = `${tr(bride, "first")} ${t("weds")} ${tr(groom, "first")} · ${t("title")}`;
+  document.title = `${tr(bride, "first")} ${t("weds")} ${tr(groom, "first")}` + (isFamily ? ` · ${t("title")}` : "");
   $$("[data-i18n]").forEach((el) => (el.textContent = t(el.dataset.i18n)));
   $$("[data-i18n-html]").forEach((el) => (el.innerHTML = t(el.dataset.i18nHtml)));
   $$("#langBtn [data-lang]").forEach((el) => el.classList.toggle("active", el.dataset.lang === lang));

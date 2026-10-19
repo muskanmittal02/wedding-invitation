@@ -20,7 +20,7 @@ for old, new in replacements:
 replace_all = [
     ("<title>Muskan weds Tarang</title>", "<title>Muskan weds Tarang · Family Invitation</title>"),
     ('content="Muskan weds Tarang"', 'content="Muskan weds Tarang · Family Invitation"'),
-    ("/wedding-invitation/og-image-mt.jpg", "/wedding-invitation/og-image-family-mt.jpg"),
+    ("/wedding-invitation/og-invite.jpg", "/wedding-invitation/og-invite-family.jpg"),
     (
         'content="With hearts full of love and joy, we warmly invite you to celebrate our special day · 1–2 December 2026 · Ranchi"',
         'content="26 November – 2 December 2026 · Ganesh Puja, Shri Shyam Ji Kirtan &amp; Wedding Celebrations · Ranchi"',

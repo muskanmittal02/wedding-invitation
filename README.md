@@ -30,7 +30,7 @@ A single-page digital wedding invitation. It's plain HTML, CSS and JavaScript wi
 | `assets/images/` | Couple photo, Ganesh ji, wax seal, paper texture |
 | `assets/music/` | The two background songs |
 | `assets/video/` | Reel and its cover image |
-| `og-image*-mt.jpg` | Link-preview images for WhatsApp and other apps |
+| `og-invite*.jpg` | Link-preview images for WhatsApp and other apps |
 
 ## Editing
 

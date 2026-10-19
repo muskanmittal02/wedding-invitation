@@ -10,7 +10,7 @@ html = (root / "index.html").read_text()
 replacements = [
     ('<meta charset="UTF-8" />', '<meta charset="UTF-8" />\n  <base href="../" />\n  <meta name="robots" content="noindex" />'),
     ('<body class="locked">', '<body class="locked" data-audience="family">'),
-    ('content="https://tarang75490.github.io/wedding/" />', 'content="https://tarang75490.github.io/wedding/family/" />'),
+    ('content="https://muskanmittal02.github.io/wedding/" />', 'content="https://muskanmittal02.github.io/wedding/family/" />'),
 ]
 for old, new in replacements:
     assert old in html, f"missing: {old}"

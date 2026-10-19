@@ -2,7 +2,7 @@
 
 A single-page digital wedding invitation. It's plain HTML, CSS and JavaScript with no build step.
 
-**Live:** https://tarang75490.github.io/wedding/ (all guests) and https://tarang75490.github.io/wedding/family/ (close family)
+**Live:** https://muskanmittal02.github.io/wedding/ (all guests) and https://muskanmittal02.github.io/wedding/family/ (close family)
 
 ## What's inside
 
@@ -44,7 +44,7 @@ python3 -m http.server 8000   # from this folder, then open http://localhost:800
 
 ## Hosting
 
-The site is fully static, so you can upload the folder to GitHub Pages, Netlify or Vercel. The link-preview tags in `index.html` point to `https://tarang75490.github.io/wedding/`. If you host it somewhere else, update those URLs.
+The site is fully static, so you can upload the folder to GitHub Pages, Netlify or Vercel. The link-preview tags in `index.html` point to `https://muskanmittal02.github.io/wedding/`. If you host it somewhere else, update those URLs.
 
 ## Image and music notes
 

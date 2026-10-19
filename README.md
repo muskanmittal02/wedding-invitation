@@ -16,7 +16,7 @@ A single-page digital wedding invitation. It's plain HTML, CSS and JavaScript wi
 - **Extras:**
   - English and Hindi.
   - Two background songs that crossfade.
-  - Auto-advance every 15 seconds.
+  - Auto-advance every 8 seconds.
   - A hidden shower of hearts when the names are tapped three times.
 
 ## Files
@@ -30,7 +30,7 @@ A single-page digital wedding invitation. It's plain HTML, CSS and JavaScript wi
 | `assets/images/` | Couple photo, Ganesh ji, wax seal, paper texture |
 | `assets/music/` | The two background songs |
 | `assets/video/` | Reel and its cover image |
-| `og-image*.jpg` | Link-preview images for WhatsApp and other apps |
+| `og-image*-mt.jpg` | Link-preview images for WhatsApp and other apps |
 
 ## Editing
 

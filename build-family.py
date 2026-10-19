@@ -19,7 +19,7 @@ for old, new in replacements:
 # Separate share preview (title, description, image) for the family link.
 replace_all = [
     ("Muskan weds Tarang · Wedding Invitation", "Muskan weds Tarang · Family Invitation"),
-    ("/wedding/og-image.jpg", "/wedding/og-image-family.jpg"),
+    ("/wedding/og-image-mt.jpg", "/wedding/og-image-family-mt.jpg"),
     (
         'content="With hearts full of love and joy, we warmly invite you to celebrate our special day · 1–2 December 2026 · Ranchi"',
         'content="26 November – 2 December 2026 · Ganesh Puja, Shri Shyam Ji Kirtan &amp; Wedding Celebrations · Ranchi"',

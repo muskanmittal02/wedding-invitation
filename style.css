@@ -99,10 +99,13 @@ a { color: inherit; }
 .letter-names {
   font-family: var(--script);
   font-weight: 400;
-  font-size: clamp(2.4rem, 11vw, 3.4rem);
+  /* "Muskan weds Tarang" on one line: sized so the M's swash stays inside the card */
+  font-size: clamp(1.7rem, 9vw, 3.4rem);
   line-height: 1.15;
   color: var(--maroon);
   margin: 0.2rem 0;
+  padding: 0 0.2em;
+  white-space: nowrap;
 }
 .letter-names em { font-style: normal; color: var(--gold); margin: 0 0.25em; }
 
@@ -482,6 +485,8 @@ body:not(.locked) .scroller { opacity: 1; }
 .regards {
   font-family: var(--script);
   font-size: clamp(2.2rem, 9vw, 3rem);
+  line-height: 1.2;
+  text-wrap: balance; /* two families: split evenly across lines, not one word left over */
   color: var(--gold-light);
   margin-top: 0.2rem;
 }
@@ -906,12 +911,19 @@ body:not(.locked) .hero::after { animation: sheen 2.2s ease-out 0.6s 1 both; }
 .hero .small-caps { color: var(--ink-soft); }
 .hero .names {
   color: transparent;
+  text-shadow: none;
+  filter: drop-shadow(0 1px 0 rgba(110, 60, 5, 0.35));
+}
+/* The foil is painted per line, and each line's box is padded (then pulled back with
+   negative margins, so the layout doesn't move): background-clip:text only paints inside
+   the box, and Great Vibes' tall swashes (the M) reach well above the line height. */
+.hero .names span {
+  padding: 0.3em 0.2em;
+  margin: -0.3em 0;
   background: linear-gradient(100deg, #6b450b 0%, #a8781f 22%, #c4923a 38%, #a3741c 52%, #6b450b 70%, #ad7f2a 88%, #6b450b 100%);
   background-size: 220% auto;
   -webkit-background-clip: text;
   background-clip: text;
-  text-shadow: none;
-  filter: drop-shadow(0 1px 0 rgba(110, 60, 5, 0.35));
   animation: foil 7s linear infinite;
 }
 .hero .names .amp { color: transparent; }

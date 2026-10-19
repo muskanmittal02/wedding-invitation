@@ -49,8 +49,8 @@ const CONFIG = {
     "With hearts full of love and joy, we warmly invite you to celebrate our special day and bless us as we begin our forever together. ❤️",
   closingMessageHi:
     "हर्ष और स्नेह से भरे हृदय से हम आपको इस शुभ अवसर पर सादर आमंत्रित करते हैं। पधारकर नवदम्पति को अपना आशीर्वाद प्रदान करें। ❤️",
-  regards: "Khetan Family",
-  regardsHi: "खेतान परिवार",
+  regards: "Bagotiya Family",
+  regardsHi: "बगोटिया परिवार",
   instagram: "https://www.instagram.com/soulful_tm/",
 
   // The countdown runs to this moment (local time in `timezone`); fireworks start once it's reached.
@@ -82,23 +82,23 @@ const CONFIG = {
     },
     {
       id: "haldi",
-      name: "Sunkissed Haldi",
-      nameHi: "सुनहरी हल्दी",
-      tagline: "A splash of turmeric, a lot of laughter",
-      taglineHi: "हल्दी का रंग, ढेर सारी हँसी",
+      name: "Sunkissed Haldi & Carnival",
+      nameHi: "सुनहरी हल्दी एवं कार्निवल",
+      tagline: "A splash of turmeric, carnival fun & a lot of laughter",
+      taglineHi: "हल्दी का रंग, कार्निवल की मस्ती और ढेर सारी हँसी",
       date: "2026-12-02",
       start: "11:00",
       ...VENUE,
       theme: { bg1: "#fbe06b", bg2: "#f0a020", accent: "#8a4300", ink: "#4a2600", card: "rgba(255,250,235,0.72)", btnInk: "#fff8e6" },
     },
     {
-      id: "baraat",
-      name: "Korath (Nikasi) & Baraat",
-      nameHi: "कोरथ (निकासी) एवं बारात",
-      tagline: "The groom sets out with music & dhol",
-      taglineHi: "ढोल-नगाड़ों के संग दूल्हे राजा की रवानगी",
+      id: "gharwa",
+      name: "Gharwa",
+      nameHi: "घरवा",
+      tagline: "Celebrating together with family & loved ones",
+      taglineHi: "अपनों के संग आनंद और उत्सव",
       date: "2026-12-02",
-      start: "17:30",
+      start: "14:00",
       main: true,
       ...VENUE,
       theme: { bg1: "#a3172b", bg2: "#3d040d", accent: "#f3cf6b", ink: "#fdf6e3", card: "rgba(0,0,0,0.25)", btnInk: "#3d040d" },
@@ -143,8 +143,8 @@ const CONFIG = {
   ],
 
   contacts: [
-    { name: "Sanjay Khetan", nameHi: "संजय खेतान", phone: "+91 9431023228" },
-    { name: "Tarang Khetan", nameHi: "तरंग खेतान", phone: "+91 9660744867" },
+    { name: "Raj Kumar Agarwal", nameHi: "राज कुमार अग्रवाल", phone: "+91 7004576735" },
+    { name: "Ritesh Mittal", nameHi: "रितेश मित्तल", phone: "+91 8825397368" },
   ],
 };
 
@@ -968,11 +968,11 @@ function setupHearts() {
 }
 
 /* ---------- Auto-advance ---------- */
-// Moves to the next page every 15 s, stopping at the last one. Any touch, scroll
+// Moves to the next page every 8 s, stopping at the last one. Any touch, scroll
 // wheel or key press pauses it; it restarts 3.5 s after the guest stops.
 const AutoAdvance = {
-  DELAY: 15000,
-  IDLE: 3500, // wait after the guest stops touching before the 15 s bar restarts
+  DELAY: 8000,
+  IDLE: 3500, // wait after the guest stops touching before the 8 s bar restarts
   timer: null,
   idleTimer: null,
   start() {

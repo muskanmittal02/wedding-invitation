@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Muskan weds Tarang · Wedding Invitation</title>
+  <meta name="description" content="You are invited to the wedding of Muskan weds Tarang · 1–2 December 2026 · The Langkawi Resort, Ranchi" />
+
+  <!-- Link preview (WhatsApp, Facebook, Instagram, iMessage, LinkedIn) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tarang75490.github.io/wedding/" />
+  <meta property="og:title" content="Muskan weds Tarang · Wedding Invitation" />
+  <meta property="og:description" content="With hearts full of love and joy, we warmly invite you to celebrate our special day · 1–2 December 2026 · Ranchi" />
+  <meta property="og:image" content="https://tarang75490.github.io/wedding/og-image.jpg" />
+  <meta property="og:image:secure_url" content="https://tarang75490.github.io/wedding/og-image.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Muskan weds Tarang wedding invitation, 1–2 December 2026, Ranchi" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Muskan weds Tarang · Wedding Invitation" />
+  <meta name="twitter:image" content="https://tarang75490.github.io/wedding/og-image.jpg" />
+  <meta name="theme-color" content="#4a0610" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css?v=61" />
+</head>
+<body class="locked">
+
+  <button id="langBtn" class="lang-btn" aria-label="Switch language / भाषा बदलें"><span data-lang="en">English</span><i>|</i><span data-lang="hi" lang="hi">हिंदी</span></button>
+
+  <!-- ===== Opening envelope (fills the whole screen) ===== -->
+  <div id="intro" class="intro">
+    <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open the invitation">
+      <div class="env-lining"></div>
+
+      <div class="env-card">
+        <div class="env-card-inner">
+          <img class="env-ganesh" src="assets/images/ganesh-gold.png" alt="" width="239" height="503" />
+          <p class="env-card-small invocation-hi" lang="hi" data-i18n="invocation">॥ श्री गणेशाय नमः ॥</p>
+          <p class="env-card-small" data-i18n="families">Together with their families</p>
+          <h2 class="letter-names"><span data-bride></span><em data-i18n="weds">weds</em><span data-groom></span></h2>
+          <p class="env-card-small" data-date-short></p>
+        </div>
+      </div>
+
+      <div class="env-pocket">
+        <div class="flap-wrap side"><div class="flap flap-left" data-botanical="11"></div></div>
+        <div class="flap-wrap side"><div class="flap flap-right" data-botanical="29"></div></div>
+        <div class="flap-wrap bottom"><div class="flap flap-bottom" data-botanical="47"></div></div>
+      </div>
+      <div class="env-flap"><div class="flap flap-top" data-botanical="83"></div></div>
+
+      <div class="seal">
+        <img src="assets/images/wax-seal-gold.png" alt="" width="340" height="338" />
+      </div>
+
+      <p class="intro-hint" data-i18n="tapSeal">Tap the seal to open</p>
+    </div>
+  </div>
+
+  <!-- Falling petals -->
+  <div id="petals" class="petals" aria-hidden="true"></div>
+
+  <!-- ===== Scrollable invitation ===== -->
+  <main id="scroller" class="scroller" aria-hidden="true">
+
+    <section id="home" class="section hero" data-label="Home">
+      <div class="hero-mandala" aria-hidden="true"></div>
+      <div class="frame"></div>
+      <i class="corner tl" aria-hidden="true"></i><i class="corner tr" aria-hidden="true"></i>
+      <i class="corner bl" aria-hidden="true"></i><i class="corner br" aria-hidden="true"></i>
+      <div class="hero-content reveal">
+        <img class="ganesh" src="assets/images/ganesh-gold.png" alt="Shri Ganesh" width="239" height="503" />
+        <p class="invocation invocation-hi" lang="hi" data-i18n="invocation">॥ श्री गणेशाय नमः ॥</p>
+        <p class="small-caps" data-i18n="families">Together with their families</p>
+        <h1 class="names">
+          <span data-bride></span>
+          <span class="amp" data-i18n="weds">weds</span>
+          <span data-groom></span>
+        </h1>
+        <p class="invite-line" data-i18n-html="inviteLine">request the pleasure of your company<br />as they begin their journey together</p>
+        <div class="divider"><span></span></div>
+        <p class="hero-date" data-date-long></p>
+        <p class="hero-city" data-city></p>
+
+        <div class="countdown" id="countdown">
+          <div><b id="cd-days">0</b><span data-i18n="days">Days</span></div>
+          <div><b id="cd-hours">0</b><span data-i18n="hours">Hours</span></div>
+          <div><b id="cd-mins">0</b><span data-i18n="mins">Minutes</span></div>
+          <div><b id="cd-secs">0</b><span data-i18n="secs">Seconds</span></div>
+        </div>
+      </div>
+      <div class="scroll-cue"><em data-i18n="scrollCue">Scroll for the celebrations</em><span>⌄</span></div>
+    </section>
+
+    <section id="couple" class="section couple" data-label="The Couple">
+      <div class="frame"></div>
+      <div class="couple-content reveal">
+        <p class="small-caps" data-i18n="elders">With the blessings of our elders</p>
+        <div class="person">
+          <h2 class="person-name" data-bride-full></h2>
+          <p class="person-line" data-bride-parents></p>
+          <p class="person-line" data-bride-gp></p>
+        </div>
+        <p class="weds-word" data-i18n="weds">weds</p>
+        <div class="person">
+          <h2 class="person-name" data-groom-full></h2>
+          <p class="person-line" data-groom-parents></p>
+          <p class="person-line" data-groom-gp></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Event sections are rendered here from CONFIG in script.js -->
+    <div id="events"></div>
+
+    <section id="closing" class="section rsvp" data-label="Warm Regards">
+      <div class="frame"></div>
+      <div class="rsvp-content reveal">
+        <p class="closing" data-closing></p>
+        <div class="divider"><span></span></div>
+        <p class="small-caps" data-i18n="regardsTitle">Warm Regards</p>
+        <p class="regards" data-regards></p>
+
+        <div class="social">
+          <p class="small-caps" data-i18n="follow">Follow our journey</p>
+          <a class="insta" id="instagram" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>
+            <span data-instagram-handle></span>
+          </a>
+        </div>
+
+      </div>
+      <footer class="contact-footer">
+        <p class="small-caps" data-i18n="queries">For any queries</p>
+        <div class="contacts" data-contacts></div>
+      </footer>
+    </section>
+
+    <section id="moments" class="section reel" data-label="Our Moments">
+      <div class="frame"></div>
+      <div class="reel-content reveal">
+        <p class="small-caps" data-i18n="glimpse">A glimpse of us</p>
+        <h2 class="script-title" data-i18n="moments">Our Moments</h2>
+        <div class="reel-wrap">
+          <video id="reel" src="assets/video/reel.mp4" poster="assets/video/reel-poster.jpg" muted loop playsinline preload="none"></video>
+          <button id="reelSound" class="reel-sound" aria-label="Turn sound on">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 9h3l5-4v14l-5-4H4z" fill="currentColor" stroke="none"/>
+              <path class="wave" d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/>
+              <path class="cross" d="M16 9l5 6M21 9l-5 6"/>
+            </svg>
+            <span>Tap for sound</span>
+          </button>
+          <button id="reelFull" class="reel-full" aria-label="Full screen">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path class="enter" d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>
+              <path class="exit" d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav id="dots" class="dots" aria-label="Sections" hidden></nav>
+
+  <!-- fills over 15 s before moving to the next page -->
+  <div id="autoBar" class="auto-bar" aria-hidden="true" hidden><i></i></div>
+
+  <button id="musicBtn" class="music-btn" aria-label="Pause music" hidden>
+    <span class="bars"><i></i><i></i><i></i><i></i></span>
+  </button>
+
+  <!-- Two background songs that crossfade into each other, on repeat (see Music in script.js).
+       If they fail to load, a soft built-in melody plays instead. -->
+  <!-- data-vol: playing volume (the longer song is ~3.7 dB louder, so it's turned down to match);
+       data-fade: seconds it takes to rise in and to fade away. -->
+  <audio id="bgm" src="assets/music/background-2.m4a?v=2" preload="auto" data-vol="0.6" data-fade="3"></audio>
+  <audio id="bgm2" src="assets/music/background.m4a?v=2" preload="auto" data-vol="0.39" data-fade="6"></audio>
+
+  <script src="script.js?v=59"></script>
+</body>
+</html>

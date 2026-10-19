@@ -25,9 +25,9 @@ const CONFIG = {
     firstHi: "तरंग",
     full: "Tarang Khetan",
     fullHi: "तरंग खेतान",
-    grandparents: "Gr/S/o Late Mrs. Sita Devi & Late Mr. Santulal Khetan",
+    grandparents: "Grandson of — Late Mrs. Sita Devi & Late Mr. Santulal Khetan",
     grandparentsHi: "पौत्र — स्व. श्रीमती सीता देवी एवं स्व. श्री संतूलाल खेतान",
-    parents: "S/o Mrs. Sheela Khetan & Mr. Sanjay Khetan",
+    parents: "Son of — Mrs. Sheela Khetan & Mr. Sanjay Khetan",
     parentsHi: "सुपुत्र — श्रीमती शीला खेतान एवं श्री संजय खेतान",
   },
   bride: {
@@ -35,9 +35,9 @@ const CONFIG = {
     firstHi: "मुस्कान",
     full: "Muskan Mittal",
     fullHi: "मुस्कान मित्तल",
-    grandparents: "Gr/D/o Late Mrs. Chadrapati Devi & Late Mr. Bishamber Dayal Agarwal",
+    grandparents: "Granddaughter of — Late Mrs. Chandrapati Devi & Late Mr. Bishamber Dayal Agarwal",
     grandparentsHi: "पौत्री — स्व. श्रीमती चन्द्रपति देवी एवं स्व. श्री बिशम्बर दयाल अग्रवाल",
-    parents: "D/o Mrs. Vinita Agarwal & Mr. Raj Kumar Agarwal",
+    parents: "Daughter of — Mrs. Vinita Agarwal & Mr. Raj Kumar Agarwal",
     parentsHi: "सुपुत्री — श्रीमती विनीता अग्रवाल एवं श्री राज कुमार अग्रवाल",
   },
   initials: "T&M",
@@ -92,25 +92,14 @@ const CONFIG = {
       theme: { bg1: "#fbe06b", bg2: "#f0a020", accent: "#8a4300", ink: "#4a2600", card: "rgba(255,250,235,0.72)", btnInk: "#fff8e6" },
     },
     {
-      id: "gharwa",
-      name: "Gharwa",
-      nameHi: "घरवा",
-      tagline: "Celebrating together with family & loved ones",
-      taglineHi: "अपनों के संग आनंद और उत्सव",
-      date: "2026-12-02",
-      start: "14:00",
-      main: true,
-      ...VENUE,
-      theme: { bg1: "#a3172b", bg2: "#3d040d", accent: "#f3cf6b", ink: "#fdf6e3", card: "rgba(0,0,0,0.25)", btnInk: "#3d040d" },
-    },
-    {
       id: "reception",
-      name: "Reception",
-      nameHi: "प्रीतिभोज",
-      tagline: "Dinner, dancing & celebrations",
-      taglineHi: "भोज, नृत्य और उत्सव",
+      name: "Wedding Ceremony & Reception",
+      nameHi: "विवाह संस्कार एवं प्रीतिभोज",
+      tagline: "Pheras, dinner & celebrations",
+      taglineHi: "फेरे, भोज और उत्सव",
       date: "2026-12-02",
       start: "19:00",
+      main: true,
       ...VENUE,
       theme: { bg1: "#16305e", bg2: "#040a1a", accent: "#d9b45a", ink: "#eef2ff", card: "rgba(255,255,255,0.06)", btnInk: "#040a1a" },
     },
@@ -275,10 +264,10 @@ function render() {
   fill("data-bride", tr(bride, "first"));
   fill("data-groom-full", tr(groom, "full"));
   fill("data-bride-full", tr(bride, "full"));
-  // Family lines: the relation ("S/o", "सुपुत्र") is set apart in gold.
+  // Family lines: the relation ("Son of", "सुपुत्र") in gold on its own line, the names below it.
   const lineage = (attr, text) => {
-    const [rel, rest] = text.includes(" — ") ? text.split(" — ") : [text.split(" ")[0], text.slice(text.indexOf(" ") + 1)];
-    $$(`[${attr}]`).forEach((el) => (el.innerHTML = `<span class="rel">${rel}</span> ${rest}`));
+    const [rel, rest] = text.split(" — ");
+    $$(`[${attr}]`).forEach((el) => (el.innerHTML = `<span class="rel">${rel}</span>${rest}`));
   };
   lineage("data-groom-gp", tr(groom, "grandparents"));
   lineage("data-groom-parents", tr(groom, "parents"));
@@ -567,10 +556,8 @@ const Synth = {
   },
 };
 
-// Two songs crossfade forever: near the end of each, it fades away while the
-// other rises in underneath, with no gap. Each <audio> sets its own volume
-// (data-vol) and rise/fade length in seconds (data-fade). Volume runs through Web Audio gain
-// nodes because iPhones ignore <audio>.volume.
+// One song on repeat (the <audio> loops). It fades in when the invitation opens.
+// Volume runs through a Web Audio gain node because iPhones ignore <audio>.volume.
 const Music = {
   btn: $("#musicBtn"),
   mode: null, // "file" | "synth"
@@ -578,17 +565,7 @@ const Music = {
   ctx: undefined,
 
   init() {
-    this.players = [$("#bgm"), $("#bgm2")]; // player i always plays song i
-    this.current = 0;
-    this.active = new Set();
-    this.crossing = false;
-    this.players.forEach((el, i) => {
-      el.addEventListener("ended", () => {
-        this.active.delete(el);
-        if (i !== this.current) this.crossing = false; // the old song finished fading out
-        else if (this.playing) this.startTrack(1 - i, 0.5).catch(() => {}); // safety net
-      });
-    });
+    this.el = $("#bgm");
   },
   // Must run inside the tap (user gesture).
   setupGraph() {
@@ -600,54 +577,30 @@ const Music = {
     if (!AC) return;
     try {
       const ctx = new AC();
-      this.gains = this.players.map((el) => {
-        const g = ctx.createGain();
-        g.gain.value = 0;
-        ctx.createMediaElementSource(el).connect(g).connect(ctx.destination);
-        return g;
-      });
+      this.gain = ctx.createGain();
+      this.gain.gain.value = 0;
+      ctx.createMediaElementSource(this.el).connect(this.gain).connect(ctx.destination);
       this.ctx = ctx;
     } catch { this.ctx = null; }
   },
-  fade(i, to, secs) {
+  fadeIn(secs) {
+    const to = Number(this.el.dataset.vol) || 0.6;
     if (this.ctx) {
-      const g = this.gains[i].gain, t = this.ctx.currentTime;
+      const g = this.gain.gain, t = this.ctx.currentTime;
       g.cancelScheduledValues(t);
       g.setValueAtTime(g.value, t);
       g.linearRampToValueAtTime(to, t + secs);
       return;
     }
     // fallback without Web Audio
-    const el = this.players[i], from = el.volume, t0 = performance.now();
+    const el = this.el, t0 = performance.now();
+    el.volume = 0;
     clearInterval(el._fade);
     el._fade = setInterval(() => {
       const k = Math.min((performance.now() - t0) / (secs * 1000), 1);
-      el.volume = from + (to - from) * k;
+      el.volume = to * k;
       if (k >= 1) clearInterval(el._fade);
     }, 50);
-  },
-  startTrack(i, fadeIn) {
-    const el = this.players[i];
-    el.currentTime = 0;
-    if (!this.ctx) el.volume = 0;
-    this.current = i;
-    this.active.add(el);
-    const p = el.play();
-    this.fade(i, this.vol(i), fadeIn);
-    return p;
-  },
-  vol(i) { return Number(this.players[i].dataset.vol) || 0.6; },
-  fadeLen(i) { return Number(this.players[i].dataset.fade) || 3; },
-  tick() {
-    if (!this.playing || this.mode !== "file" || this.crossing) return;
-    const el = this.players[this.current];
-    if (!el.duration || isNaN(el.duration)) return;
-    const out = this.fadeLen(this.current), next = 1 - this.current;
-    if (el.duration - el.currentTime <= out) {
-      this.crossing = true;
-      this.fade(this.current, 0, out);                            // this song fades away...
-      this.startTrack(next, this.fadeLen(next)).catch(() => {});  // ...while the next one rises
-    }
   },
 
   start() {
@@ -655,16 +608,17 @@ const Music = {
     Synth.init();
     this.setupGraph();
     if (this.ctx) this.ctx.resume();
-    if (this.players[0].error) return this.useSynth();
-    this.startTrack(0, 1.5).then(
+    if (this.el.error) return this.useSynth();
+    this.el.currentTime = 0;
+    this.el.play().then(
       () => {
         this.mode = "file";
         this.setPlaying(true);
         Synth.ctx && Synth.ctx.suspend();
-        this.timer = setInterval(() => this.tick(), 200);
       },
-      () => { this.active.clear(); this.useSynth(); }
+      () => this.useSynth()
     );
+    this.fadeIn(1.5);
   },
   useSynth() {
     this.mode = "synth";
@@ -674,15 +628,15 @@ const Music = {
   play() {
     if (this.mode === "file") {
       if (this.ctx) this.ctx.resume();
-      this.active.forEach((el) => el.play().catch(() => {}));
+      this.el.play().catch(() => {});
     } else Synth.play();
     this.setPlaying(true);
   },
   pause() {
     this.setPlaying(false);
     if (this.mode === "file") {
-      this.active.forEach((el) => el.pause());
-      if (this.ctx) this.ctx.suspend(); // also freezes any fade in progress
+      this.el.pause();
+      if (this.ctx) this.ctx.suspend();
     } else Synth.pause();
   },
   toggle() { this.playing ? this.pause() : this.play(); },

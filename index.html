@@ -27,7 +27,7 @@
     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="style.css?v=63" />
+  <link rel="stylesheet" href="style.css?v=80" />
 </head>
 <body class="locked">
 
@@ -177,13 +177,10 @@
     <span class="bars"><i></i><i></i><i></i><i></i></span>
   </button>
 
-  <!-- Two background songs that crossfade into each other, on repeat (see Music in script.js).
-       If they fail to load, a soft built-in melody plays instead. -->
-  <!-- data-vol: playing volume (the longer song is ~3.7 dB louder, so it's turned down to match);
-       data-fade: seconds it takes to rise in and to fade away. -->
-  <audio id="bgm" src="assets/music/background-2.m4a?v=2" preload="auto" data-vol="0.6" data-fade="3"></audio>
-  <audio id="bgm2" src="assets/music/background.m4a?v=2" preload="auto" data-vol="0.39" data-fade="6"></audio>
+  <!-- Background song, on repeat (see Music in script.js). If it fails to load, a soft
+       built-in melody plays instead. data-vol: playing volume. -->
+  <audio id="bgm" src="assets/music/background-2.m4a?v=2" preload="auto" loop data-vol="0.6"></audio>
 
-  <script src="script.js?v=66"></script>
+  <script src="script.js?v=88"></script>
 </body>
 </html>

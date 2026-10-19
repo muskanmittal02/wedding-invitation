@@ -643,8 +643,9 @@ body:not(.locked) .scroller { opacity: 1; }
   opacity: 0.92;
   text-wrap: balance;
 }
-.person-line + .person-line { font-style: italic; margin-top: 0.15rem; }
+.person-line + .person-line { font-style: italic; margin-top: 0.6rem; }
 .person-line .rel {
+  display: block;
   font-family: var(--caps);
   font-style: normal;
   font-size: 0.78em;

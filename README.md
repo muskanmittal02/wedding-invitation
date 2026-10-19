@@ -15,7 +15,7 @@ A single-page digital wedding invitation. It's plain HTML, CSS and JavaScript wi
 - **Our Moments:** the reel, with tap-for-sound and full screen.
 - **Extras:**
   - English and Hindi.
-  - Two background songs that crossfade.
+  - A background song on repeat.
   - Auto-advance every 8 seconds.
   - A hidden shower of hearts when the names are tapped three times.
 
@@ -28,7 +28,7 @@ A single-page digital wedding invitation. It's plain HTML, CSS and JavaScript wi
 | `script.js` | All content and behaviour. Names, dates, venues and contacts are in `CONFIG` at the top. |
 | `style.css` | All styling |
 | `assets/images/` | Couple photo, Ganesh ji, wax seal, paper texture |
-| `assets/music/` | The two background songs |
+| `assets/music/` | The background song (`background-2.m4a`; `background.m4a` is no longer used) |
 | `assets/video/` | Reel and its cover image |
 | `og-invite*.jpg` | Link-preview images for WhatsApp and other apps |
 
@@ -53,4 +53,4 @@ The site is fully static, so you can upload the folder to GitHub Pages, Netlify 
   - Paper texture (Pexels).
 - **Sourced from Google or YouTube, licence unknown:**
   - The gold rose wax seal.
-  - The two songs.
+  - The background song.

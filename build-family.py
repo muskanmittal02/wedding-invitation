@@ -18,20 +18,20 @@ for old, new in replacements:
 
 # Separate share preview (title, description, image) for the family link.
 replace_all = [
-    ("<title>Muskan weds Tarang</title>", "<title>Muskan weds Tarang · Family Invitation</title>"),
-    ('content="Muskan weds Tarang"', 'content="Muskan weds Tarang · Family Invitation"'),
+    ("<title>Muskan &amp; Tarang</title>", "<title>Muskan &amp; Tarang · Family Invitation</title>"),
+    ('content="Muskan &amp; Tarang"', 'content="Muskan &amp; Tarang · Family Invitation"'),
     ("/wedding-invitation/og-invite.jpg", "/wedding-invitation/og-invite-family.jpg"),
     (
         'content="With hearts full of love and joy, we warmly invite you to celebrate our special day · 1–2 December 2026 · Ranchi"',
         'content="26 November – 2 December 2026 · Ganesh Puja, Shri Shyam Ji Kirtan &amp; Wedding Celebrations · Ranchi"',
     ),
     (
-        'content="Muskan weds Tarang · 1–2 December 2026 · The Langkawi Resort, Ranchi"',
-        'content="Family invitation · Muskan weds Tarang · 26 November – 2 December 2026 · Ranchi"',
+        'content="Muskan &amp; Tarang · 1–2 December 2026 · The Langkawi Resort, Ranchi"',
+        'content="Family invitation · Muskan &amp; Tarang · 26 November – 2 December 2026 · Ranchi"',
     ),
     (
-        'content="Muskan weds Tarang wedding invitation, 1–2 December 2026, Ranchi"',
-        'content="Muskan weds Tarang family invitation, 26 November – 2 December 2026, Ranchi"',
+        'content="Muskan &amp; Tarang wedding invitation, 1–2 December 2026, Ranchi"',
+        'content="Muskan &amp; Tarang family invitation, 26 November – 2 December 2026, Ranchi"',
     ),
 ]
 for old, new in replace_all:

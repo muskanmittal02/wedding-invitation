@@ -2,7 +2,7 @@
 
 A single-page digital wedding invitation. It's plain HTML, CSS and JavaScript with no build step.
 
-**Live:** https://muskanmittal02.github.io/wedding/ (all guests) and https://muskanmittal02.github.io/wedding/family/ (close family)
+**Live:** https://muskanmittal02.github.io/wedding-invitation/ (all guests) and https://muskanmittal02.github.io/wedding-invitation/family/ (close family)
 
 ## What's inside
 
@@ -36,7 +36,7 @@ A single-page digital wedding invitation. It's plain HTML, CSS and JavaScript wi
 
 1. Change the text, dates or contacts in `CONFIG` at the top of `script.js`.
 2. If you edit `index.html`, run `python3 build-family.py` to regenerate the family page.
-3. To preview locally, serve the folder at a `/wedding/` path, or just open `index.html`.
+3. To preview locally, serve the folder at a `/wedding-invitation/` path, or just open `index.html`.
 
 ```bash
 python3 -m http.server 8000   # from this folder, then open http://localhost:8000/
@@ -44,7 +44,7 @@ python3 -m http.server 8000   # from this folder, then open http://localhost:800
 
 ## Hosting
 
-The site is fully static, so you can upload the folder to GitHub Pages, Netlify or Vercel. The link-preview tags in `index.html` point to `https://muskanmittal02.github.io/wedding/`. If you host it somewhere else, update those URLs.
+The site is fully static, so you can upload the folder to GitHub Pages, Netlify or Vercel. The link-preview tags in `index.html` point to `https://muskanmittal02.github.io/wedding-invitation/`. If you host it somewhere else, update those URLs.
 
 ## Image and music notes
 

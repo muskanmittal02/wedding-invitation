@@ -116,7 +116,7 @@ const CONFIG = {
     },
   ],
 
-  // Shown only on the family link (/wedding/family/), before the main events.
+  // Shown only on the family link (/wedding-invitation/family/), before the main events.
   familyEvents: [
     {
       id: "ganesh-puja",

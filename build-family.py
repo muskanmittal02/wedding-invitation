@@ -1,4 +1,4 @@
-"""Generate family/index.html (the /wedding/family/ link) from index.html.
+"""Generate family/index.html (the /wedding-invitation/family/ link) from index.html.
 
 Run after editing index.html:  python3 build-family.py
 """
@@ -10,7 +10,7 @@ html = (root / "index.html").read_text()
 replacements = [
     ('<meta charset="UTF-8" />', '<meta charset="UTF-8" />\n  <base href="../" />\n  <meta name="robots" content="noindex" />'),
     ('<body class="locked">', '<body class="locked" data-audience="family">'),
-    ('content="https://muskanmittal02.github.io/wedding/" />', 'content="https://muskanmittal02.github.io/wedding/family/" />'),
+    ('content="https://muskanmittal02.github.io/wedding-invitation/" />', 'content="https://muskanmittal02.github.io/wedding-invitation/family/" />'),
 ]
 for old, new in replacements:
     assert old in html, f"missing: {old}"
@@ -20,7 +20,7 @@ for old, new in replacements:
 replace_all = [
     ("<title>Muskan weds Tarang</title>", "<title>Muskan weds Tarang · Family Invitation</title>"),
     ('content="Muskan weds Tarang"', 'content="Muskan weds Tarang · Family Invitation"'),
-    ("/wedding/og-image-mt.jpg", "/wedding/og-image-family-mt.jpg"),
+    ("/wedding-invitation/og-image-mt.jpg", "/wedding-invitation/og-image-family-mt.jpg"),
     (
         'content="With hearts full of love and joy, we warmly invite you to celebrate our special day · 1–2 December 2026 · Ranchi"',
         'content="26 November – 2 December 2026 · Ganesh Puja, Shri Shyam Ji Kirtan &amp; Wedding Celebrations · Ranchi"',

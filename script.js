@@ -25,20 +25,20 @@ const CONFIG = {
     firstHi: "तरंग",
     full: "Tarang Khetan",
     fullHi: "तरंग खेतान",
-    grandparents: "Grandson of — Late Mrs. Sita Devi & Late Mr. Santulal Khetan",
-    grandparentsHi: "पौत्र — स्व. श्रीमती सीता देवी एवं स्व. श्री संतूलाल खेतान",
-    parents: "Son of — Mrs. Sheela Khetan & Mr. Sanjay Khetan",
-    parentsHi: "सुपुत्र — श्रीमती शीला खेतान एवं श्री संजय खेतान",
+    grandparents: "Grandson of — Late Mrs. Sita & Late Mr. Santulal Khetan",
+    grandparentsHi: "पौत्र — स्व. श्रीमती सीता एवं स्व. श्री संतूलाल खेतान",
+    parents: "Son of — Mrs. Sheela & Mr. Sanjay Khetan",
+    parentsHi: "सुपुत्र — श्रीमती शीला एवं श्री संजय खेतान",
   },
   bride: {
     first: "Muskan",
     firstHi: "मुस्कान",
     full: "Muskan Mittal",
     fullHi: "मुस्कान मित्तल",
-    grandparents: "Granddaughter of — Late Mrs. Chandrapati Devi & Late Mr. Bishamber Dayal Agarwal",
-    grandparentsHi: "पौत्री — स्व. श्रीमती चन्द्रपति देवी एवं स्व. श्री बिशम्बर दयाल अग्रवाल",
-    parents: "Daughter of — Mrs. Vinita Agarwal & Mr. Raj Kumar Agarwal",
-    parentsHi: "सुपुत्री — श्रीमती विनीता अग्रवाल एवं श्री राज कुमार अग्रवाल",
+    grandparents: "Granddaughter of — Late Mrs. Chandrapati & Late Mr. Bishamber Dayal Agarwal",
+    grandparentsHi: "पौत्री — स्व. श्रीमती चन्द्रपति एवं स्व. श्री बिशम्बर दयाल अग्रवाल",
+    parents: "Daughter of — Mrs. Vinita & Mr. Raj Kumar Agarwal",
+    parentsHi: "सुपुत्री — श्रीमती विनीता एवं श्री राज कुमार अग्रवाल",
   },
   initials: "T&M",
   city: "Ranchi, Jharkhand",
@@ -49,8 +49,8 @@ const CONFIG = {
     "With hearts full of love and joy, we warmly invite you to celebrate our special day and bless us as we begin our forever together. ❤️",
   closingMessageHi:
     "हर्ष और स्नेह से भरे हृदय से हम आपको इस शुभ अवसर पर सादर आमंत्रित करते हैं। पधारकर नवदम्पति को अपना आशीर्वाद प्रदान करें। ❤️",
-  regards: "Bagotiya Family",
-  regardsHi: "बगोटिया परिवार",
+  regards: "Bagotiya Mittal Family",
+  regardsHi: "बगोटिया मित्तल परिवार",
   instagram: "https://www.instagram.com/soulful_tm/",
 
   // The countdown runs to this moment (local time in `timezone`); fireworks start once it's reached.
@@ -95,8 +95,8 @@ const CONFIG = {
       id: "reception",
       name: "Wedding Ceremony & Reception",
       nameHi: "विवाह संस्कार एवं प्रीतिभोज",
-      tagline: "Pheras, dinner & celebrations",
-      taglineHi: "फेरे, भोज और उत्सव",
+      tagline: "Seven pheras, seven vows, one forever",
+      taglineHi: "सात फेरे, सात वचन, जन्मों का साथ",
       date: "2026-12-02",
       start: "19:00",
       main: true,
@@ -164,6 +164,7 @@ const STRINGS = {
     date: "Date", time: "Time", venue: "Venue",
     onwards: (hhmm) => `${formatTime(hhmm)} onwards`,
     viewMap: "View on Map",
+    venueTitle: "The Venue",
     regardsTitle: "Warm Regards",
     follow: "Follow our journey",
     queries: "For any queries",
@@ -192,6 +193,7 @@ const STRINGS = {
       return `${part} ${h % 12 || 12}:${String(m).padStart(2, "0")} बजे से`;
     },
     viewMap: "नक्शे पर देखें",
+    venueTitle: "विवाह स्थल",
     regardsTitle: "विनीत",
     follow: "हमारे सफ़र से जुड़े रहें",
     queries: "किसी भी जानकारी हेतु संपर्क करें",
@@ -234,16 +236,36 @@ function mandalaSVG() {
   </svg>`;
 }
 
+// Family lines stay on one line: a long one (the grandparents) is made a little
+// smaller until it fits the screen, instead of wrapping onto a second line.
+function fitLines() {
+  $$(".person-line").forEach((el) => {
+    el.style.fontSize = "";
+    const full = parseFloat(getComputedStyle(el).fontSize);
+    let size = full;
+    while (el.scrollWidth > el.clientWidth + 1 && size > full * 0.62) {
+      size -= 0.5;
+      el.style.fontSize = `${size}px`;
+    }
+  });
+}
+addEventListener("resize", fitLines);
+document.fonts?.ready.then(fitLines);
+
 /* ---------- Render content ---------- */
 // Event sections are built once; render() fills in the text and runs
 // again whenever the language changes.
+// Illustrations behind the event pages (artwork: see README), by event id.
+const EVENT_ART = { mayra: "mayra", sangeet: "sangeet", haldi: "haldi", reception: "wedding" };
+
 function buildEvents() {
   $("#events").outerHTML = allEvents
     .map((ev) => {
-      const t = ev.theme;
-      const style = `--bg1:${t.bg1};--bg2:${t.bg2};--accent:${t.accent};--ink:${t.ink};--card:${t.card};--btn-ink:${t.btnInk}`;
+      const t = ev.theme, art = EVENT_ART[ev.id];
+      const style = `--bg1:${t.bg1};--bg2:${t.bg2};--accent:${t.accent};--ink:${t.ink};--card:${t.card};--btn-ink:${t.btnInk}` +
+        (art ? `;--art:url('assets/images/art/${art}.jpg')` : "");
       return `
-      <section id="${ev.id}" class="section event" style="${style}">
+      <section id="${ev.id}" class="section event${art ? " has-art" : ""}" style="${style}">
         <div class="mandala" aria-hidden="true">${mandalaSVG()}</div>
         <article class="event-card reveal"></article>
       </section>`;
@@ -273,6 +295,7 @@ function render() {
   lineage("data-groom-parents", tr(groom, "parents"));
   lineage("data-bride-gp", tr(bride, "grandparents"));
   lineage("data-bride-parents", tr(bride, "parents"));
+  fitLines();
   fill("data-initials", CONFIG.initials);
   fill("data-city", tr(CONFIG, "city"));
   fill("data-date-long", formatDate(mainEvent.date, { weekday: "long", day: "numeric", month: "long", year: "numeric" }));
@@ -302,6 +325,7 @@ function render() {
     const section = $(`#${ev.id}`);
     section.dataset.label = name;
     $(".event-card", section).innerHTML = `
+          <img class="page-ganesh" src="assets/images/ganesh-gold.png" alt="" width="239" height="503" />
           <p class="event-count">${t("count")(i + 1, total)}</p>
           <h2 class="event-name${name.length > 20 ? " long xlong" : name.length > 10 ? " long" : ""}">${name}</h2>
           <p class="event-tagline">${tr(ev, "tagline")}</p>
@@ -309,17 +333,24 @@ function render() {
           <ul class="event-details">
             <li><span class="label">${t("date")}</span>${formatDate(ev.date, { weekday: "long", day: "numeric", month: "long", year: "numeric" })}</li>
             <li><span class="label">${t("time")}</span>${t("onwards")(ev.start)}</li>
-            <li><span class="label">${t("venue")}</span>${tr(ev, "venue")}<small>${tr(ev, "address")}</small></li>
+            ${ev.venue === VENUE.venue ? "" : `<li><span class="label">${t("venue")}</span>${tr(ev, "venue")}<small>${tr(ev, "address")}</small></li>`}
           </ul>
-          <div class="actions">
+          ${ev.venue === VENUE.venue ? "" : `<div class="actions">
             <a class="btn" href="${ev.map}" target="_blank" rel="noopener">${t("viewMap")}</a>
-          </div>`;
+          </div>`}`;
   });
 
   // Static sections name themselves for the dot nav.
   $("#home").dataset.label = t("home");
   $("#couple").dataset.label = t("couple");
   $("#closing").dataset.label = t("regardsTitle");
+  fill("data-venue-name", tr(VENUE, "venue"));
+  fill("data-venue-address", tr(VENUE, "address"));
+  $("#venueMap").href = VENUE.map;
+  const venueDays = CONFIG.events.filter((e) => e.venue === VENUE.venue).map((e) => e.date);
+  const [d1, d2] = [venueDays[0], venueDays[venueDays.length - 1]];
+  fill("data-venue-dates", d1 === d2 ? formatDate(d1, { day: "numeric", month: "long", year: "numeric" })
+    : `${formatDate(d1, { day: "numeric" })} – ${formatDate(d2, { day: "numeric", month: "long", year: "numeric" })}`);
   $("#moments").dataset.label = t("moments");
   const sections = $$("#scroller .section");
   $$("#dots button").forEach((b, i) => {
@@ -626,6 +657,7 @@ const Music = {
     this.setPlaying(true);
   },
   play() {
+    if (!this.mode) return this.start();
     if (this.mode === "file") {
       if (this.ctx) this.ctx.resume();
       this.el.play().catch(() => {});
@@ -982,10 +1014,16 @@ function setupIntro() {
   const envelope = $("#envelope");
   let opened = false;
 
-  const open = () => {
+  // `auto`: opened by the timer, not a tap. Browsers only allow sound after the guest
+  // touches the page, so the music then starts on their first tap or key press.
+  const open = (auto) => {
     if (opened) return;
     opened = true;
-    Music.start();
+    if (auto !== true) Music.start();
+    else {
+      const go = () => { if (!Music.mode) Music.start(); };
+      ["pointerdown", "touchend", "keydown"].forEach((ev) => document.addEventListener(ev, go, { once: true }));
+    }
     intro.classList.add("opening");
     envelope.classList.add("open");
 
@@ -1003,6 +1041,7 @@ function setupIntro() {
   };
 
   envelope.addEventListener("click", open);
+  setTimeout(() => open(true), 6000);
   envelope.addEventListener("keydown", (e) => {
     if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); }
   });
@@ -1012,6 +1051,7 @@ function setupIntro() {
 setupHearts();
 drawEnvelope();
 $(".hero-mandala").innerHTML = mandalaSVG();
+$(".rsvp-mandala").innerHTML = mandalaSVG();
 buildEvents();
 render();
 setupLang();

@@ -373,6 +373,57 @@ body:not(.locked) .scroller { opacity: 1; }
     linear-gradient(165deg, var(--bg1), var(--bg2));
 }
 
+/* An illustration behind the page: the page colour washes over it, heaviest at the top
+   behind the card and lighter towards the bottom, where the couple stands. */
+/* Phones: the whole picture across the width, standing on the bottom, its top faded
+   out so it melts into the page colour. */
+.event.has-art::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  aspect-ratio: 950 / 1190;
+  background: var(--art) center bottom / cover no-repeat;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 45%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 45%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+/* Wide screens: the picture stands centred behind the card at full height, its sides
+   and top fading into the page colour. */
+@media (min-aspect-ratio: 1/1) {
+  .event.has-art::before {
+    left: 50%;
+    right: auto;
+    height: 100%;
+    translate: -50% 0;
+    /* pushed down so the couple stands below the text, as on phones */
+    height: 100%;
+    bottom: auto;
+    top: 36%;
+    opacity: 0.6;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 45%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 45%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+}
+/* On picture pages the details sit straight on the faded picture, like the closing
+   page: no box, just a soft shadow behind the letters. */
+.event.has-art .event-card {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  text-shadow: 0 1px 10px color-mix(in srgb, var(--bg2) 85%, transparent), 0 1px 2px color-mix(in srgb, var(--bg2) 60%, transparent);
+}
+.event.has-art .event-card::before { display: none; }
+/* Haldi's text is dark brown on yellow: a light glow instead of a dark shadow */
+#haldi.has-art .event-card { text-shadow: 0 0 12px rgba(255, 246, 214, 0.95), 0 0 3px rgba(255, 246, 214, 0.9); }
+.event.has-art .mandala { opacity: 0.08; }
+
 .mandala {
   position: absolute;
   width: min(140vw, 900px);
@@ -464,10 +515,24 @@ body:not(.locked) .scroller { opacity: 1; }
 
 /* rsvp */
 .rsvp {
+  /* deep maroon with a warm gold glow, a slowly turning gold mandala and gold corners */
   background:
-    radial-gradient(circle at 50% 40%, rgba(217, 180, 90, 0.16), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 50% 42%, rgba(217, 180, 90, 0.2), transparent 70%),
     radial-gradient(circle at 50% 60%, #6d1422, var(--maroon-dark) 80%);
 }
+.rsvp-mandala {
+  position: absolute;
+  width: min(130vw, 820px);
+  aspect-ratio: 1;
+  left: 50%;
+  top: 46%;
+  translate: -50% -50%;
+  color: var(--gold);
+  opacity: 0.09;
+  animation: spin 140s linear infinite;
+  pointer-events: none;
+}
+.rsvp .corner { opacity: 0.8; }
 .rsvp-content { max-width: 560px; }
 .script-title {
   font-family: var(--script);
@@ -490,7 +555,7 @@ body:not(.locked) .scroller { opacity: 1; }
   color: var(--gold-light);
   margin-top: 0.2rem;
 }
-.social { margin-top: 1.8rem; }
+.social { margin-top: 1.1rem; }
 .social .insta { margin-top: 0.7rem; }
 .insta {
   display: inline-flex;
@@ -617,6 +682,87 @@ body:not(.locked) .scroller { opacity: 1; }
 .reel-sound.on .cross { display: none; }
 
 /* couple */
+/* venue, on the closing page: plain text under a gold divider, no box */
+.venue-block { margin: 0.2rem auto 0; }
+.venue-name { font-family: var(--script); font-weight: 400; font-size: clamp(1.9rem, 7.5vw, 2.4rem); line-height: 1.15; color: var(--gold); margin: 0.1rem 0 0.3rem; }
+html[lang="hi"] .venue-name { font-family: "Tiro Devanagari Hindi", var(--serif); font-size: clamp(1.6rem, 6.5vw, 2.1rem); }
+.venue-address { font-size: 1rem; opacity: 0.92; margin-bottom: 0.8rem; line-height: 1.5; }
+.venue-dates { font-family: var(--caps); font-size: 0.85em; letter-spacing: 0.12em; color: var(--gold); }
+.venue-block .btn { --accent: var(--gold); --btn-ink: var(--maroon-dark); padding: 0.55rem 1.2rem; }
+#closing .contact-footer { margin-top: 1rem; }
+#closing { padding-block: 2.6rem 1.6rem; }
+
+/* ---------- Warm Regards: the closing card, a bookend to the Home page ----------
+   Same cream paper, gold frame and corners, maroon ink and gold-foil script. */
+#closing {
+  --ink: #5b0f1a;
+  --ink-soft: #8a5a1c;
+  --foil: #b8862b;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(255, 255, 255, 0.75), transparent 62%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23c9a24a' stroke-opacity='.22' stroke-width='.8'%3E%3Cpath d='M36 10c6 8 6 18 0 26-6-8-6-18 0-26zM36 62c6-8 6-18 0-26-6 8-6 18 0 26zM10 36c8-6 18-6 26 0-8 6-18 6-26 0zM62 36c-8-6-18-6-26 0 8 6 18 6 26 0z'/%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(160deg, #fffaf0 0%, #f7ecd4 55%, #eedcb6 100%);
+}
+#closing .frame { inset: 10px; border: 1.5px solid rgba(184, 134, 43, 0.85); }
+#closing .frame::before { inset: 5px; border-color: rgba(184, 134, 43, 0.45); }
+#closing .rsvp-mandala { color: var(--foil); opacity: 0.1; }
+#closing .corner { opacity: 1; }
+#closing .page-ganesh { filter: none; }
+#closing .small-caps { color: var(--ink-soft); }
+#closing .closing { color: var(--ink); opacity: 0.9; text-shadow: none; }
+#closing .divider { --accent: var(--foil); }
+/* the family name in shimmering gold foil, like the couple's names on Home */
+#closing .regards {
+  color: transparent;
+  padding: 0.25em 0.2em;
+  margin: -0.15em 0 -0.1em;
+  background: linear-gradient(100deg, #6b450b 0%, #a8781f 22%, #c4923a 38%, #a3741c 52%, #6b450b 70%, #ad7f2a 88%, #6b450b 100%);
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(0 1px 0 rgba(110, 60, 5, 0.3));
+  animation: foil 7s linear infinite;
+  font-size: clamp(2.1rem, 8.4vw, 3.4rem);
+  white-space: nowrap;
+}
+html[lang="hi"] #closing .regards { font-size: clamp(2rem, 8vw, 2.8rem); }
+/* the venue: a framed panel with an arched top, maroon ink on warm white */
+#closing .venue-name { color: #7a1424; }
+#closing .venue-address { color: var(--ink); opacity: 0.85; }
+#closing .venue-dates { color: var(--foil); }
+/* a slim outlined link, so the family name stays the focus */
+#closing .venue-block .btn { background: transparent; color: #7a1424; border-color: rgba(122, 20, 36, 0.55); padding: 0.4rem 1rem; font-size: 0.68rem; }
+#closing .venue-block .btn:hover { background: #7a1424; color: #fff6e6; }
+/* contacts */
+#closing .contact-footer { border-top-color: rgba(184, 134, 43, 0.45); }
+#closing .contact-name { color: var(--ink); }
+#closing .contact-phone { color: var(--ink); }
+#closing .call-btn { background: #7a1424; color: #fff6e6; }
+/* on the Our Moments page, below the reel (which is a little shorter to make room) */
+.reel .social { margin-top: 0.8rem; opacity: 0.8; }
+/* kept small and quiet: a footnote, not the focus of the page */
+.reel .social .small-caps { font-size: 0.6rem; letter-spacing: 0.18em; margin-bottom: 0; }
+.reel .social .insta { margin-top: 0.35rem; padding: 0.3rem 0.8rem; font-size: 0.85rem; gap: 0.35rem; }
+.reel .social .insta svg { width: 14px; height: 14px; }
+.reel .reel-wrap { height: min(50vh, 520px); height: min(50dvh, 520px); }
+@media (max-height: 700px) { .reel .reel-wrap { height: 44dvh; } .reel .script-title { margin-bottom: 0.5rem; } }
+
+/* short phone screens: tighten the closing page so it all fits on one screen */
+@media (max-height: 760px) and (max-aspect-ratio: 1/1) {
+  #closing { padding-block: 2.2rem 1.2rem; }
+  #closing .page-ganesh { height: 34px; margin-bottom: 0.2rem; }
+  #closing .closing { font-size: 1.02rem; line-height: 1.45; }
+  #closing .divider { margin-block: 0.5rem; }
+  .venue-name { font-size: 1.7rem; }
+  .venue-address { font-size: 0.88rem; margin-bottom: 0.5rem; }
+  #closing .regards { font-size: 1.9rem; }
+  #closing .contact-footer { margin-top: 0.8rem; padding-top: 0.6rem; }
+}
+
+/* small Ganesh ji at the top of every page */
+.page-ganesh { display: block; width: auto; height: 46px; margin: 0 auto 0.5rem; filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.25)); }
+
 .couple {
   /* Couple photo, faded under a maroon wash so the gold text stays readable. */
   background:
@@ -641,8 +787,9 @@ body:not(.locked) .scroller { opacity: 1; }
   font-size: clamp(1rem, 3.8vw, 1.2rem);
   line-height: 1.55;
   opacity: 0.92;
-  text-wrap: balance;
+  white-space: nowrap; /* see fitLines() in script.js */
 }
+.person-line .rel { white-space: normal; }
 .person-line + .person-line { font-style: italic; margin-top: 0.6rem; }
 .person-line .rel {
   display: block;
@@ -845,7 +992,7 @@ html[lang="hi"] .script-title { line-height: 1.4; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .mandala, .petal, .scroll-cue span { animation: none; }
+  .mandala, .rsvp-mandala, .petal, .scroll-cue span { animation: none; }
   .petals { display: none; }
   .scroller { scroll-behavior: auto; }
 }

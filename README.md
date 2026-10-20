@@ -42,6 +42,10 @@ A single-page digital wedding invitation. It's plain HTML, CSS and JavaScript wi
 python3 -m http.server 8000   # from this folder, then open http://localhost:8000/
 ```
 
+## Printable card
+
+`print/Muskan-Tarang-Invitation-hi.pdf` (Hindi) and `print/Muskan-Tarang-Invitation-en.pdf` (English) are an 8-page A5 booklet: cover with the wax seal, the invitation, the couple and families, one page per celebration, and a back page with regards, venue, contacts and a QR code to the website. The words live in `print/build-print.py` (separate from `CONFIG`). After editing, run `python3 print/build-print.py`, open `print/invitation-hi.html` or `invitation-en.html` in Chrome, and Print → Save as PDF (A5, margins None, Background graphics on).
+
 ## Hosting
 
 The site is fully static, so you can upload the folder to GitHub Pages, Netlify or Vercel. The link-preview tags in `index.html` point to `https://muskanmittal02.github.io/wedding-invitation/`. If you host it somewhere else, update those URLs.
@@ -51,6 +55,7 @@ The site is fully static, so you can upload the folder to GitHub Pages, Netlify 
 - **Free to use:**
   - Ganesh ji line art (Pixabay).
   - Paper texture (Pexels).
+- **Page illustrations (`assets/images/art/`), by Invitique Studio. Taken from screenshots of their samples for a local preview; not licensed for publishing.**
 - **Sourced from Google or YouTube, licence unknown:**
   - The gold rose wax seal.
   - The background song.

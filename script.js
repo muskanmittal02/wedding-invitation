@@ -50,7 +50,7 @@ const CONFIG = {
   closingMessageHi:
     "हर्ष और स्नेह से भरे हृदय से हम आपको इस शुभ अवसर पर सादर आमंत्रित करते हैं। पधारकर नवदम्पति को अपना आशीर्वाद प्रदान करें। ❤️",
   regards: "Bagotiya Mittal Family",
-  regardsHi: "बगोटिया मित्तल परिवार",
+  regardsHi: "बागोतिया मित्तल परिवार",
   instagram: "https://www.instagram.com/soulful_tm/",
 
   // The countdown runs to this moment (local time in `timezone`); fireworks start once it's reached.

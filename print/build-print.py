@@ -34,7 +34,7 @@ T = {
         ],
         venue="द लंकावी रिज़ॉर्ट", address="बरियातू, राँची 834009", venue_title="विवाह स्थल",
         closing="हर्ष और स्नेह से भरे हृदय से हम आपको इस शुभ अवसर पर सादर आमंत्रित करते हैं। पधारकर नवदम्पति को अपना आशीर्वाद प्रदान करें।",
-        regards_title="विनीत", regards="बागोतिया मित्तल परिवार",
+        regards_title="विनीत", presence="आपकी उपस्थिति और आशीर्वाद हमारे उत्सव को और भी विशेष बना देंगे।", regards="बागोतिया मित्तल परिवार",
         queries="किसी भी जानकारी हेतु संपर्क करें",
         contacts=[("राज कुमार अग्रवाल", "+91 70045 76735"), ("रितेश मित्तल", "+91 88253 97368")],
         qr="डिजिटल निमंत्रण देखने के लिए स्कैन करें",
@@ -58,7 +58,7 @@ T = {
         ],
         venue="The Langkawi Resort", address="Bariatu, Ranchi, 834009", venue_title="The Venue",
         closing="With hearts full of love and joy, we warmly invite you to celebrate our special day and bless us as we begin our forever together.",
-        regards_title="Warm Regards", regards="Bagotiya Mittal Family",
+        regards_title="Warm Regards", presence="Your presence and blessings will make our celebration even more special.", regards="Bagotiya Mittal Family",
         queries="For any queries",
         contacts=[("Raj Kumar Agarwal", "+91 70045 76735"), ("Ritesh Mittal", "+91 88253 97368")],
         qr="Scan to open the digital invitation",
@@ -105,7 +105,6 @@ def qr_svg():
 
 
 GANESH = '<img class="ganesh" src="../assets/images/ganesh-gold.png" alt="" />'
-SEAL = '<img class="seal" src="../assets/images/wax-seal-gold.png" alt="" />'
 
 STYLE = """
 @page { size: A5; margin: 0; }
@@ -143,7 +142,14 @@ body { font-family: "Cormorant Garamond", Georgia, serif; -webkit-print-color-ad
 .cover { color: #f3dc9a; background: radial-gradient(circle at 50% 45%, #8e1a2a 0%, #5e0d19 50%, #33070d 100%); }
 .cover .mandala { opacity: 0.14; width: 150mm; }
 .cover .invocation { font-family: "Tiro Devanagari Hindi", serif; font-size: 12pt; color: #e9c46a; }
-.cover .seal { display: block; width: 44mm; margin: 9mm auto 7mm; filter: drop-shadow(0 3mm 4mm rgba(0, 0, 0, 0.45)); }
+/* the cover is Ganesh ji alone, large, in a gold double ring, with "Shubh Vivah" below */
+.cover { --div: #d9b45a; }
+.cover .halo { width: 92mm; height: 92mm; margin: 0 auto 7mm; border-radius: 50%; display: grid; place-items: center;
+  border: 1pt solid #d9b45a; box-shadow: 0 0 0 2.2mm #5e0d19, 0 0 0 2.6mm rgba(217, 180, 90, 0.6);
+  background: radial-gradient(circle, rgba(233, 196, 106, 0.16) 0%, rgba(233, 196, 106, 0.05) 60%, transparent 72%); }
+.cover .ganesh-big { height: 70mm; width: auto; }
+.cover .invocation { font-size: 16pt !important; }
+.cover .shubh { font-family: "Tiro Devanagari Hindi", serif; font-size: 26pt; color: #ecc871; }
 .cover .names { font-size: 44pt; line-height: 1.05; }
 :lang(hi) .cover .names { font-size: 36pt; line-height: 1.3; }
 .cover .names em { display: block; font-style: normal; font-size: 0.5em; }
@@ -154,7 +160,8 @@ body { font-family: "Cormorant Garamond", Georgia, serif; -webkit-print-color-ad
 .cream { color: #5b0f1a; background: radial-gradient(ellipse at 50% 42%, rgba(255,255,255,0.8), transparent 62%), linear-gradient(160deg, #fffaf0 0%, #f7ecd4 55%, #eedcb6 100%); }
 .cream .caps { color: #8a5a1c; }
 .invite .invocation { font-family: "Tiro Devanagari Hindi", serif; color: #8a1c2b; font-size: 11pt; margin-bottom: 4mm; }
-.invite .names { font-size: 50pt; line-height: 1.05; margin: 5mm 0 2mm; }
+.invite .shloka { font-family: "Tiro Devanagari Hindi", serif; color: #8a1c2b; font-size: 11pt; line-height: 1.6; margin: -2mm 0 4mm; }
+.invite .names { font-size: 46pt; line-height: 1.05; margin: 5mm 0 2mm; }
 :lang(hi) .invite .names { font-size: 40pt; line-height: 1.3; }
 .invite .names em { display: block; font-style: normal; font-size: 0.5em; }
 .invite .line { font-style: italic; font-size: 13.5pt; line-height: 1.55; margin: 3mm 0; }
@@ -195,6 +202,8 @@ body { font-family: "Cormorant Garamond", Georgia, serif; -webkit-print-color-ad
 .back { justify-content: center; padding-block: 14mm; }
 .back .msg { font-style: italic; font-size: 12.5pt; line-height: 1.55; }
 :lang(hi) .back .msg { font-family: "Tiro Devanagari Hindi", serif; font-style: normal; font-size: 11.5pt; }
+.back .msg.note { font-size: 11pt; margin-top: 2mm; opacity: 0.85; }
+:lang(hi) .back .msg.note { font-size: 10.5pt; }
 .back .regards { font-size: 32pt; line-height: 1.2; }
 :lang(hi) .back .regards { font-size: 24pt; }
 .back .venue { font-size: 24pt; color: #7a1424; line-height: 1.2; }
@@ -255,16 +264,17 @@ def build(code):
     # 1 · cover
     pages.append(f'''<section class="page cover">{mandala("#e9c46a")}{frame("#d9b45a")}
   <div class="content">
+    <div class="halo"><img class="ganesh-big" src="../assets/images/ganesh-gold.png" alt="" /></div>
     <p class="invocation">॥ श्री गणेशाय नमः ॥</p>
-    {SEAL}
-    <h1 class="names script foil light">{w["bride"]}<em>{w["weds"]}</em>{w["groom"]}</h1>
-    <p class="when">{w["cover_date"]}</p>
+    <div class="divider"><span></span></div>
+    <p class="shubh">शुभ विवाह</p>
   </div></section>''')
     # 2 · the invitation
     pages.append(f'''<section class="page cream invite">{mandala("#b8862b")}{frame()}
   <div class="content">
     {GANESH}
     <p class="invocation">॥ श्री गणेशाय नमः ॥</p>
+    <p class="shloka">वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ ।<br />निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥</p>
     <p class="caps">{w["families"]}</p>
     <h1 class="names script foil">{w["bride"]}<em>{w["weds"]}</em>{w["groom"]}</h1>
     <p class="line">{w["invite"]}</p>
@@ -300,6 +310,7 @@ def build(code):
   <div class="content">
     {GANESH}
     <p class="msg">{w["closing"]}</p>
+    <p class="msg note">{w["presence"]}</p>
     <div class="divider"><span></span></div>
     <p class="caps">{w["regards_title"]}</p>
     <p class="regards script foil">{w["regards"]}</p>

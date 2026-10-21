@@ -547,6 +547,11 @@ body:not(.locked) .scroller { opacity: 1; }
   font-size: clamp(1.2rem, 4.4vw, 1.55rem);
   line-height: 1.6;
 }
+/* a second, smaller line under the closing message */
+.closing-note { font-style: italic; font-size: clamp(1rem, 3.8vw, 1.2rem); line-height: 1.5; margin-top: 0.5rem; padding: 0 0.9rem; opacity: 0.85; }
+html[lang="hi"] .closing-note { font-style: normal; }
+#closing .closing-note { color: var(--ink); }
+@media (max-height: 760px) and (max-aspect-ratio: 1/1) { #closing .closing-note { font-size: 0.92rem; margin-top: 0.3rem; } }
 .regards {
   font-family: var(--script);
   font-size: clamp(2.2rem, 9vw, 3rem);
@@ -1056,6 +1061,9 @@ body:not(.locked) .hero::after { animation: sheen 2.2s ease-out 0.6s 1 both; }
 .hero .invocation { color: #8a1c2b; }
 /* the invocation is always in Devanagari: no letter-spacing (it breaks conjuncts) */
 .invocation-hi { font-family: "Tiro Devanagari Hindi", var(--serif); letter-spacing: normal; text-transform: none; font-size: 1.05rem; }
+/* the Ganesh shloka under the invocation on Home */
+.shloka { font-family: "Tiro Devanagari Hindi", var(--serif); font-size: clamp(0.92rem, 3.6vw, 1.1rem); line-height: 1.6; color: #8a1c2b; margin: -0.3rem 0 0.9rem; white-space: nowrap; }
+@media (max-height: 760px) { .shloka { font-size: 0.86rem; line-height: 1.45; margin-bottom: 0.5rem; } }
 .hero .small-caps { color: var(--ink-soft); }
 .hero .names {
   color: transparent;

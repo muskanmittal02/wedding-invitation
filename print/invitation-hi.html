@@ -43,7 +43,14 @@ body { font-family: "Cormorant Garamond", Georgia, serif; -webkit-print-color-ad
 .cover { color: #f3dc9a; background: radial-gradient(circle at 50% 45%, #8e1a2a 0%, #5e0d19 50%, #33070d 100%); }
 .cover .mandala { opacity: 0.14; width: 150mm; }
 .cover .invocation { font-family: "Tiro Devanagari Hindi", serif; font-size: 12pt; color: #e9c46a; }
-.cover .seal { display: block; width: 44mm; margin: 9mm auto 7mm; filter: drop-shadow(0 3mm 4mm rgba(0, 0, 0, 0.45)); }
+/* the cover is Ganesh ji alone, large, in a gold double ring, with "Shubh Vivah" below */
+.cover { --div: #d9b45a; }
+.cover .halo { width: 92mm; height: 92mm; margin: 0 auto 7mm; border-radius: 50%; display: grid; place-items: center;
+  border: 1pt solid #d9b45a; box-shadow: 0 0 0 2.2mm #5e0d19, 0 0 0 2.6mm rgba(217, 180, 90, 0.6);
+  background: radial-gradient(circle, rgba(233, 196, 106, 0.16) 0%, rgba(233, 196, 106, 0.05) 60%, transparent 72%); }
+.cover .ganesh-big { height: 70mm; width: auto; }
+.cover .invocation { font-size: 16pt !important; }
+.cover .shubh { font-family: "Tiro Devanagari Hindi", serif; font-size: 26pt; color: #ecc871; }
 .cover .names { font-size: 44pt; line-height: 1.05; }
 :lang(hi) .cover .names { font-size: 36pt; line-height: 1.3; }
 .cover .names em { display: block; font-style: normal; font-size: 0.5em; }
@@ -54,7 +61,8 @@ body { font-family: "Cormorant Garamond", Georgia, serif; -webkit-print-color-ad
 .cream { color: #5b0f1a; background: radial-gradient(ellipse at 50% 42%, rgba(255,255,255,0.8), transparent 62%), linear-gradient(160deg, #fffaf0 0%, #f7ecd4 55%, #eedcb6 100%); }
 .cream .caps { color: #8a5a1c; }
 .invite .invocation { font-family: "Tiro Devanagari Hindi", serif; color: #8a1c2b; font-size: 11pt; margin-bottom: 4mm; }
-.invite .names { font-size: 50pt; line-height: 1.05; margin: 5mm 0 2mm; }
+.invite .shloka { font-family: "Tiro Devanagari Hindi", serif; color: #8a1c2b; font-size: 11pt; line-height: 1.6; margin: -2mm 0 4mm; }
+.invite .names { font-size: 46pt; line-height: 1.05; margin: 5mm 0 2mm; }
 :lang(hi) .invite .names { font-size: 40pt; line-height: 1.3; }
 .invite .names em { display: block; font-style: normal; font-size: 0.5em; }
 .invite .line { font-style: italic; font-size: 13.5pt; line-height: 1.55; margin: 3mm 0; }
@@ -95,6 +103,8 @@ body { font-family: "Cormorant Garamond", Georgia, serif; -webkit-print-color-ad
 .back { justify-content: center; padding-block: 14mm; }
 .back .msg { font-style: italic; font-size: 12.5pt; line-height: 1.55; }
 :lang(hi) .back .msg { font-family: "Tiro Devanagari Hindi", serif; font-style: normal; font-size: 11.5pt; }
+.back .msg.note { font-size: 11pt; margin-top: 2mm; opacity: 0.85; }
+:lang(hi) .back .msg.note { font-size: 10.5pt; }
 .back .regards { font-size: 32pt; line-height: 1.2; }
 :lang(hi) .back .regards { font-size: 24pt; }
 .back .venue { font-size: 24pt; color: #7a1424; line-height: 1.2; }
@@ -113,15 +123,16 @@ body { font-family: "Cormorant Garamond", Georgia, serif; -webkit-print-color-ad
 <body>
 <section class="page cover"><svg class="mandala" viewBox="0 0 200 200" fill="none" stroke="#e9c46a" stroke-width="0.8"><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(0.0 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(11.25 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(22.5 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(33.75 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(45.0 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(56.25 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(67.5 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(78.75 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(90.0 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(101.25 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(112.5 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(123.75 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(135.0 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(146.25 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(157.5 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(168.75 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(180.0 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(191.25 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(202.5 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(213.75 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(225.0 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(236.25 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(247.5 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(258.75 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(270.0 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(281.25 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(292.5 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(303.75 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(315.0 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(326.25 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(337.5 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(348.75 100 100)"/><circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="88" stroke-dasharray="2 3"/><circle cx="100" cy="100" r="28"/><circle cx="100" cy="100" r="18"/><circle cx="100" cy="100" r="6" fill="#e9c46a"/></svg><div class="frame" style="--line:#d9b45a"></div><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
   <div class="content">
+    <div class="halo"><img class="ganesh-big" src="../assets/images/ganesh-gold.png" alt="" /></div>
     <p class="invocation">॥ श्री गणेशाय नमः ॥</p>
-    <img class="seal" src="../assets/images/wax-seal-gold.png" alt="" />
-    <h1 class="names script foil light">मुस्कान<em>संग</em>तरंग</h1>
-    <p class="when">1 – 2 दिसंबर 2026</p>
+    <div class="divider"><span></span></div>
+    <p class="shubh">शुभ विवाह</p>
   </div></section>
 <section class="page cream invite"><svg class="mandala" viewBox="0 0 200 200" fill="none" stroke="#b8862b" stroke-width="0.8"><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(0.0 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(11.25 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(22.5 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(33.75 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(45.0 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(56.25 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(67.5 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(78.75 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(90.0 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(101.25 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(112.5 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(123.75 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(135.0 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(146.25 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(157.5 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(168.75 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(180.0 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(191.25 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(202.5 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(213.75 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(225.0 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(236.25 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(247.5 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(258.75 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(270.0 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(281.25 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(292.5 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(303.75 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(315.0 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(326.25 100 100)"/><ellipse cx="100" cy="45" rx="10" ry="40" transform="rotate(337.5 100 100)"/><ellipse cx="100" cy="22" rx="5" ry="16" transform="rotate(348.75 100 100)"/><circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="88" stroke-dasharray="2 3"/><circle cx="100" cy="100" r="28"/><circle cx="100" cy="100" r="18"/><circle cx="100" cy="100" r="6" fill="#b8862b"/></svg><div class="frame" style="--line:#b8862b"></div><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
   <div class="content">
     <img class="ganesh" src="../assets/images/ganesh-gold.png" alt="" />
     <p class="invocation">॥ श्री गणेशाय नमः ॥</p>
+    <p class="shloka">वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ ।<br />निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥</p>
     <p class="caps">सपरिवार शुभ आशीर्वाद सहित</p>
     <h1 class="names script foil">मुस्कान<em>संग</em>तरंग</h1>
     <p class="line">अपने नवजीवन के शुभारंभ पर<br />आपकी गरिमामयी उपस्थिति के आकांक्षी हैं</p>
@@ -177,6 +188,7 @@ body { font-family: "Cormorant Garamond", Georgia, serif; -webkit-print-color-ad
   <div class="content">
     <img class="ganesh" src="../assets/images/ganesh-gold.png" alt="" />
     <p class="msg">हर्ष और स्नेह से भरे हृदय से हम आपको इस शुभ अवसर पर सादर आमंत्रित करते हैं। पधारकर नवदम्पति को अपना आशीर्वाद प्रदान करें।</p>
+    <p class="msg note">आपकी उपस्थिति और आशीर्वाद हमारे उत्सव को और भी विशेष बना देंगे।</p>
     <div class="divider"><span></span></div>
     <p class="caps">विनीत</p>
     <p class="regards script foil">बागोतिया मित्तल परिवार</p>
